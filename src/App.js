@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-function App() {
+
+import './App.css';
+import Userinput from './usercontent/UserInput'
+import Useroutput from './usercontent/UserOutput'
+
+
+
+class App extends Component {
+  state ={
+    person: {name: "Mizanur"}
+  }
+  evenhandler=(event)=>{
+    this.setState ({
+      person: {name: event.target.value}
+    })
+  };
+
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Userinput event={this.evenhandler} username={this.state.person.name}></Userinput>
+      
+      <Useroutput username={this.state.person.name}>this is</Useroutput>
+      <Useroutput username={this.state.person.name}>this is</Useroutput>
     </div>
+    
   );
+  }
 }
 
 export default App;
